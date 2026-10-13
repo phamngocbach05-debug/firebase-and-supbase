@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "BT6 - Flutter (Chrome Web)",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "chrome",
+      "args": ["-d", "chrome"]
+    },
+    {
+      "name": "BT6 - Flutter (Windows Desktop)",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "windows"
+    },
+    {
+      "name": "BT6 - Flutter (Auto Select Device)",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}

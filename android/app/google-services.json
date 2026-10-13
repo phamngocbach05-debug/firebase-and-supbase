@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "738756354127",
+    "project_id": "bth6-1a78a",
+    "storage_bucket": "bth6-1a78a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738756354127:android:39642428dce6f1093a0a3a",
+        "android_client_info": {
+          "package_name": "com.quanlytailieu.bt6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738756354127-webclientid1234567890abcdefghijklmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMT32sfgvW1ZEt5TbhDTttJOv-j_zhROk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738756354127-webclientid1234567890abcdefghijklmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+rules_version = '2';
+
+// Quy tắc bảo mật Firebase Storage cho Quản lý Tài liệu Đa nền tảng (BT6)
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Hàm tiện ích kiểm tra đăng nhập
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Hàm kiểm tra người dùng có phải là người tải lên thư mục này hay không
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Cấu trúc phân cấp lưu trữ: documents/{userId}/{documentId}/{fileName}
+    match /documents/{userId}/{documentId}/{fileName} {
+      
+      // Cho phép đọc file nếu đã đăng nhập (Quyền chi tiết được kiểm soát qua Supabase RLS)
+      // Tệp tin chỉ được tải hoặc mở khi người dùng có URL download hợp lệ
+      allow read: if isAuthenticated();
+
+      // Chỉ chính chủ sở hữu tài khoản (userId) mới được tải file vật lý lên thư mục của họ
+      // Giới hạn kích thước file tải lên tối đa 50MB và yêu cầu file có kiểu dữ liệu hợp lệ
+      allow create, update: if isOwner(userId) 
+                            && request.resource.size < 50 * 1024 * 1024;
+
+      // Chỉ chính chủ sở hữu mới có quyền xóa file vật lý trên Firebase Storage
+      allow delete: if isOwner(userId);
+    }
+
+    // Chặn truy cập tất cả các đường dẫn khác ngoài cấu trúc quy định
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

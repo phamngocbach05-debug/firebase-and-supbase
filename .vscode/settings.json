@@ -1,0 +1,10 @@
+{
+  "dart.flutterSdkPath": null,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "files.associations": {
+    "*.sql": "sql"
+  }
+}
